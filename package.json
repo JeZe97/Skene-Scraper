@@ -1,0 +1,12 @@
+{
+  "name": "skene-raapija",
+  "version": "0.0.1",
+  "description": "Hakee päivän ruuat",
+  "main": "skene.js",
+  "author": "JeZe",
+  "dependencies": {
+    "express": "latest",
+    "request": "latest",
+    "cheerio": "latest"
+  }
+}
