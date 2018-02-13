@@ -1,3 +1,7 @@
+// 13.2.2018
+// Varo vaaraa
+// Et todellakaan haluu lukee tätä koodia eteenpäin
+
 var express = require('express');
 var fs = require('fs');
 var request = require('request');
@@ -15,10 +19,6 @@ app.get('/skene', function(req, res){
         var $ = cheerio.load(html);
 
         var Skenejson = { ruoka1 : "", ruoka2 : "", ruoka3 : "", ruoka4 : "", ruoka5 : "", ruoka6 : "", ruoka7: ""};
-
-
-        // Varo vaaraa
-        // Et todellakaan haluu lukee tätä koodia eteenpäin
 
         $('channel').each(function(i, element){
             var a = $(this);
@@ -59,7 +59,6 @@ app.get('/skene', function(req, res){
             Skenejson.ruoka7 = arr[6];
 
         });
-
 
     }
 
