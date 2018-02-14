@@ -5,7 +5,6 @@
   "main": "skene.js",
   "author": "JeZe",
   "dependencies": {
-    "express": "latest",
     "request": "latest",
     "cheerio": "latest"
   }

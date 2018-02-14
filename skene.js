@@ -1,11 +1,6 @@
-const express = require('express');
 const fs = require('fs');
 const request = require('request');
 const cheerio = require('cheerio');
-const app     = express();
-
-app.get('/skene', function(req, res){
-
 
   let SkeneUrl = 'http://www.juvenes.fi/tabid/2584/moduleid/7083/RSS.aspx';
 
@@ -14,7 +9,7 @@ app.get('/skene', function(req, res){
     if(!error){
         let $ = cheerio.load(html);
 
-        var Skenejson = { ruoka1 : "", ruoka2 : "", ruoka3 : "", ruoka4 : "", ruoka5 : "", ruoka6 : "", ruoka7: ""};
+        var Skenejson = { ruoka1 : "", ruoka2 : "", ruoka3 : "", ruoka4 : "", ruoka5 : "", ruoka6 : "", ruoka7: "", ruoka8: "", ruoka9: "", ruoka10: ""};
 
 
         // Varo vaaraa
@@ -58,7 +53,10 @@ app.get('/skene', function(req, res){
             Skenejson.ruoka5 = arr[4];
             Skenejson.ruoka6 = arr[5];
             Skenejson.ruoka7 = arr[6];
-
+            Skenejson.ruoka8 = arr[7];
+            Skenejson.ruoka9 = arr[8];
+            Skenejson.ruoka10 = arr[9];
+            
         });
 
 
@@ -71,11 +69,3 @@ app.get('/skene', function(req, res){
     })
 
   })
-
-})
-
-app.listen('8081')
-
-console.log('Magic happens on port 8081');
-
-exports = module.exports = app;
