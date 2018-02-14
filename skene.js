@@ -1,31 +1,32 @@
-// 13.2.2018
-// Varo vaaraa
-// Et todellakaan haluu lukee tätä koodia eteenpäin
-
-var express = require('express');
-var fs = require('fs');
-var request = require('request');
-var cheerio = require('cheerio');
-var app     = express();
+const express = require('express');
+const fs = require('fs');
+const request = require('request');
+const cheerio = require('cheerio');
+const app     = express();
 
 app.get('/skene', function(req, res){
 
 
-  SkeneUrl = 'http://www.juvenes.fi/tabid/2584/moduleid/7083/RSS.aspx';
+  let SkeneUrl = 'http://www.juvenes.fi/tabid/2584/moduleid/7083/RSS.aspx';
 
   request(SkeneUrl, function(error, response, html){
 
     if(!error){
-        var $ = cheerio.load(html);
+        let $ = cheerio.load(html);
 
         var Skenejson = { ruoka1 : "", ruoka2 : "", ruoka3 : "", ruoka4 : "", ruoka5 : "", ruoka6 : "", ruoka7: ""};
 
+
+        // Varo vaaraa
+        // Et todellakaan haluu lukee tätä koodia eteenpäin
+
         $('channel').each(function(i, element){
-            var a = $(this);
+            let a = $(this);
 
-            var loki = a.children().last().text();
+            let loki = a.children().last().prev().prev().prev().text();
 
-            var arr = loki.split("<li>");
+
+            let arr = loki.split("<li>");
 
 
             for (let i = 0; i < arr.length; i++) {
@@ -59,6 +60,7 @@ app.get('/skene', function(req, res){
             Skenejson.ruoka7 = arr[6];
 
         });
+
 
     }
 
